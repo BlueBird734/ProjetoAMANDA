@@ -3,7 +3,6 @@ Partial Class CadastroNecessidades
     Inherits System.Web.UI.Page
 
 
-
     Protected Sub Page_Load(sender As Object, gridLocais As Object, e As EventArgs)
         If Not IsPostBack Then
             Dim dt As New Data.DataTable()
