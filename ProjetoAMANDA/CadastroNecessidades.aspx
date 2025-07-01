@@ -134,6 +134,54 @@
         <asp:Button ID="btnRegistrar" runat="server" Text="Registrar Demanda" CssClass="btn" OnClick="btnRegistrar_Click" />
 
         <br /><br />
+
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:BDFinalAmandaConnectionString %>" DeleteCommand="DELETE FROM [local] WHERE [Bairro] = @original_Bairro AND [Casa] = @original_Casa AND [Lojas] = @original_Lojas AND (([Ruas] = @original_Ruas) OR ([Ruas] IS NULL AND @original_Ruas IS NULL))" InsertCommand="INSERT INTO [local] ([Bairro], [Casa], [Lojas], [Ruas]) VALUES (@Bairro, @Casa, @Lojas, @Ruas)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [local]" UpdateCommand="UPDATE [local] SET [Casa] = @Casa, [Lojas] = @Lojas, [Ruas] = @Ruas WHERE [Bairro] = @original_Bairro AND [Casa] = @original_Casa AND [Lojas] = @original_Lojas AND (([Ruas] = @original_Ruas) OR ([Ruas] IS NULL AND @original_Ruas IS NULL))">
+    <DeleteParameters>
+        <asp:Parameter Name="original_Bairro" Type="String" />
+        <asp:Parameter Name="original_Casa" Type="String" />
+        <asp:Parameter Name="original_Lojas" Type="String" />
+        <asp:Parameter Name="original_Ruas" Type="String" />
+    </DeleteParameters>
+    <InsertParameters>
+        <asp:ControlParameter ControlID="GridView1" Name="Bairro" PropertyName="SelectedValue" Type="String" />
+        <asp:Parameter Name="Casa" Type="String" />
+        <asp:Parameter Name="Lojas" Type="String" />
+        <asp:Parameter Name="Ruas" Type="String" />
+    </InsertParameters>
+    <UpdateParameters>
+        <asp:Parameter Name="Casa" Type="String" />
+        <asp:Parameter Name="Lojas" Type="String" />
+        <asp:Parameter Name="Ruas" Type="String" />
+        <asp:Parameter Name="original_Bairro" Type="String" />
+        <asp:Parameter Name="original_Casa" Type="String" />
+        <asp:Parameter Name="original_Lojas" Type="String" />
+        <asp:Parameter Name="original_Ruas" Type="String" />
+    </UpdateParameters>
+</asp:SqlDataSource>
+<asp:Label ID="lblMensagem" runat="server" ForeColor="Green" />
+
+
+<asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Bairro" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
+    <AlternatingRowStyle BackColor="White" />
+    <Columns>
+        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
+        <asp:BoundField DataField="Bairro" HeaderText="Bairro" ReadOnly="True" SortExpression="Bairro" />
+        <asp:BoundField DataField="Casa" HeaderText="Casa" SortExpression="Casa" />
+        <asp:BoundField DataField="Lojas" HeaderText="Lojas" SortExpression="Lojas" />
+        <asp:BoundField DataField="Ruas" HeaderText="Ruas" SortExpression="Ruas" />
+    </Columns>
+    <EditRowStyle BackColor="#2461BF" />
+    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+    <RowStyle BackColor="#EFF3FB" />
+    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+</asp:GridView>
+
         <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
         <asp:Label ID="lblMensagem" runat="server" ForeColor="Green" />
 
