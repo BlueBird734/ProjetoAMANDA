@@ -122,10 +122,53 @@ Não são superpoderes que movem esses heróis — são ações como:</p>
 
             <formv>
 
-            <br />
+                    <br />
 
-    <asp:Button ID="btnFaleConosco" runat="server" Text="FaleConosco" CssClass="btn" />
-            <br />
+<asp:Button ID="btnFaleConosco" runat="server" Text="FaleConosco" CssClass="btn" />
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Nome" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
+                <asp:BoundField DataField="Nome" HeaderText="Nome" ReadOnly="True" SortExpression="Nome" />
+                <asp:BoundField DataField="Telefone" HeaderText="Telefone" SortExpression="Telefone" />
+                <asp:BoundField DataField="Descricao" HeaderText="Descricao" SortExpression="Descricao" />
+                <asp:BoundField DataField="Data_Registro" HeaderText="Data_Registro" SortExpression="Data_Registro" />
+            </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:BDFinalAmandaConnectionString %>" DeleteCommand="DELETE FROM [FaleConosco] WHERE [Nome] = @original_Nome AND [Telefone] = @original_Telefone AND (([Descricao] = @original_Descricao) OR ([Descricao] IS NULL AND @original_Descricao IS NULL)) AND [Data_Registro] = @original_Data_Registro" InsertCommand="INSERT INTO [FaleConosco] ([Nome], [Telefone], [Descricao], [Data_Registro]) VALUES (@Nome, @Telefone, @Descricao, @Data_Registro)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [FaleConosco]" UpdateCommand="UPDATE [FaleConosco] SET [Telefone] = @Telefone, [Descricao] = @Descricao, [Data_Registro] = @Data_Registro WHERE [Nome] = @original_Nome AND [Telefone] = @original_Telefone AND (([Descricao] = @original_Descricao) OR ([Descricao] IS NULL AND @original_Descricao IS NULL)) AND [Data_Registro] = @original_Data_Registro">
+            <DeleteParameters>
+                <asp:Parameter Name="original_Nome" Type="String" />
+                <asp:Parameter Name="original_Telefone" Type="String" />
+                <asp:Parameter Name="original_Descricao" Type="String" />
+                <asp:Parameter DbType="Date" Name="original_Data_Registro" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:ControlParameter ControlID="GridView1" Name="Nome" PropertyName="SelectedValue" Type="String" />
+                <asp:Parameter Name="Telefone" Type="String" />
+                <asp:Parameter Name="Descricao" Type="String" />
+                <asp:Parameter DbType="Date" Name="Data_Registro" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="Telefone" Type="String" />
+                <asp:Parameter Name="Descricao" Type="String" />
+                <asp:Parameter DbType="Date" Name="Data_Registro" />
+                <asp:Parameter Name="original_Nome" Type="String" />
+                <asp:Parameter Name="original_Telefone" Type="String" />
+                <asp:Parameter Name="original_Descricao" Type="String" />
+                <asp:Parameter DbType="Date" Name="original_Data_Registro" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <br />
 
                 <a href="https://www.exemplo.com">
     <img src="https://th.bing.com/th/id/OIP.W8wrr8KX3Yetxdbf6d26nwHaCc?w=272&h=115&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" 
