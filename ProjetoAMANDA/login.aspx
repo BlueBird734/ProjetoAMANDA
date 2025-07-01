@@ -88,6 +88,65 @@
 
             <div class="field">
     <asp:Label ID="lblMensagem" runat="server" ForeColor="Red" />
+
+<br />
+<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:BDFinalAmandaConnectionString %>" DeleteCommand="DELETE FROM [usuario] WHERE [Nome] = @original_Nome AND (([Email] = @original_Email) OR ([Email] IS NULL AND @original_Email IS NULL)) AND (([Senha] = @original_Senha) OR ([Senha] IS NULL AND @original_Senha IS NULL))" InsertCommand="INSERT INTO [usuario] ([Email], [Senha], [Nome]) VALUES (@Email, @Senha, @Nome)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [usuario]" UpdateCommand="UPDATE [usuario] SET [Email] = @Email, [Senha] = @Senha WHERE [Nome] = @original_Nome AND (([Email] = @original_Email) OR ([Email] IS NULL AND @original_Email IS NULL)) AND (([Senha] = @original_Senha) OR ([Senha] IS NULL AND @original_Senha IS NULL))">
+    <DeleteParameters>
+        <asp:Parameter Name="original_Nome" Type="String" />
+        <asp:Parameter Name="original_Email" Type="String" />
+        <asp:Parameter Name="original_Senha" Type="String" />
+    </DeleteParameters>
+    <InsertParameters>
+        <asp:ControlParameter ControlID="txtEmail" Name="Email" PropertyName="Text" Type="String" />
+        <asp:ControlParameter ControlID="txtSenha" Name="Senha" PropertyName="Text" Type="String" />
+        <asp:ControlParameter ControlID="txtNome" Name="Nome" PropertyName="Text" Type="String" />
+    </InsertParameters>
+    <UpdateParameters>
+        <asp:Parameter Name="Email" Type="String" />
+        <asp:Parameter Name="Senha" Type="String" />
+        <asp:Parameter Name="original_Nome" Type="String" />
+        <asp:Parameter Name="original_Email" Type="String" />
+        <asp:Parameter Name="original_Senha" Type="String" />
+    </UpdateParameters>
+</asp:SqlDataSource>
+<asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Nome" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
+    <AlternatingRowStyle BackColor="White" />
+    <Columns>
+        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
+        <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+        <asp:BoundField DataField="Senha" HeaderText="Senha" SortExpression="Senha" />
+        <asp:BoundField DataField="Nome" HeaderText="Nome" ReadOnly="True" SortExpression="Nome" />
+    </Columns>
+    <EditRowStyle BackColor="#2461BF" />
+    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+    <RowStyle BackColor="#EFF3FB" />
+    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+</asp:GridView>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:BDFinalAmandaConnectionString %>" DeleteCommand="DELETE FROM [usuario] WHERE [Nome] = @original_Nome AND (([Email] = @original_Email) OR ([Email] IS NULL AND @original_Email IS NULL)) AND (([Senha] = @original_Senha) OR ([Senha] IS NULL AND @original_Senha IS NULL))" InsertCommand="INSERT INTO [usuario] ([Email], [Senha], [Nome]) VALUES (@Email, @Senha, @Nome)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT Email, Senha, Nome FROM usuario" UpdateCommand="UPDATE [usuario] SET [Email] = @Email, [Senha] = @Senha WHERE [Nome] = @original_Nome AND (([Email] = @original_Email) OR ([Email] IS NULL AND @original_Email IS NULL)) AND (([Senha] = @original_Senha) OR ([Senha] IS NULL AND @original_Senha IS NULL))">
+    <DeleteParameters>
+        <asp:Parameter Name="original_Nome" Type="String" />
+        <asp:Parameter Name="original_Email" Type="String" />
+        <asp:Parameter Name="original_Senha" Type="String" />
+    </DeleteParameters>
+    <InsertParameters>
+        <asp:ControlParameter ControlID="GridView1" Name="Email" PropertyName="SelectedValue" Type="String" />
+        <asp:Parameter Name="Senha" Type="String" />
+        <asp:Parameter Name="Nome" Type="String" />
+    </InsertParameters>
+    <UpdateParameters>
+        <asp:Parameter Name="Email" Type="String" />
+        <asp:Parameter Name="Senha" Type="String" />
+        <asp:Parameter Name="original_Nome" Type="String" />
+        <asp:Parameter Name="original_Email" Type="String" />
+        <asp:Parameter Name="original_Senha" Type="String" />
+    </UpdateParameters>
+</asp:SqlDataSource>
 </div>
 
         </form>
