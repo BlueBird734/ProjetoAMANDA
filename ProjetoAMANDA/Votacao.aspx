@@ -1,4 +1,5 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Votacao.aspx.vb" Inherits="Votacao" %>
+
+<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Votacao.aspx.vb" Inherits="Votacao" %>
 
 <!DOCTYPE html>
 
@@ -99,9 +100,52 @@
         </Columns>
     </asp:GridView>
 
-       <asp:Button ID="btnEnviar" runat="server" Text="Enviar" OnClick="btnEnviar_Click" />
-       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BDFinalAmandaConnectionString %>" SelectCommand="SELECT * FROM [FaleConosco]"></asp:SqlDataSource>
-<br /><br />
+              <asp:Button ID="btnEnviar" runat="server" Text="Enviar" OnClick="btnEnviar_Click" />
+                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None">
+                    <AlternatingRowStyle BackColor="White" />
+                    <Columns>
+                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
+                        <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" ReadOnly="True" />
+                        <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
+                        <asp:BoundField DataField="Descricao" HeaderText="Descricao" SortExpression="Descricao" />
+                        <asp:BoundField DataField="votos" HeaderText="votos" SortExpression="votos" />
+                    </Columns>
+                    <EditRowStyle BackColor="#2461BF" />
+                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#EFF3FB" />
+                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                </asp:GridView>
+<br />
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:BDFinalAmandaConnectionString %>" DeleteCommand="DELETE FROM [Votacao] WHERE [Id] = @original_Id AND [Nome] = @original_Nome AND [Descricao] = @original_Descricao AND (([votos] = @original_votos) OR ([votos] IS NULL AND @original_votos IS NULL))" InsertCommand="INSERT INTO [Votacao] ([Id], [Nome], [Descricao], [votos]) VALUES (@Id, @Nome, @Descricao, @votos)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Votacao]" UpdateCommand="UPDATE [Votacao] SET [Nome] = @Nome, [Descricao] = @Descricao, [votos] = @votos WHERE [Id] = @original_Id AND [Nome] = @original_Nome AND [Descricao] = @original_Descricao AND (([votos] = @original_votos) OR ([votos] IS NULL AND @original_votos IS NULL))">
+                    <DeleteParameters>
+                        <asp:Parameter Name="original_Id" Type="String" />
+                        <asp:Parameter Name="original_Nome" Type="String" />
+                        <asp:Parameter Name="original_Descricao" Type="String" />
+                        <asp:Parameter Name="original_votos" Type="String" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:ControlParameter ControlID="GridView1" Name="Id" PropertyName="SelectedValue" Type="String" />
+                        <asp:Parameter Name="Nome" Type="String" />
+                        <asp:Parameter Name="Descricao" Type="String" />
+                        <asp:Parameter Name="votos" Type="String" />
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Nome" Type="String" />
+                        <asp:Parameter Name="Descricao" Type="String" />
+                        <asp:Parameter Name="votos" Type="String" />
+                        <asp:Parameter Name="original_Id" Type="String" />
+                        <asp:Parameter Name="original_Nome" Type="String" />
+                        <asp:Parameter Name="original_Descricao" Type="String" />
+                        <asp:Parameter Name="original_votos" Type="String" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+       <br />
 <asp:Label ID="lblMensagem" runat="server" ForeColor="Green" />
 
 <asp:Button ID="btnResultado0" runat="server" Text="Ver Resultado" CssClass="btn" OnClick="btnResultado_Click" />
