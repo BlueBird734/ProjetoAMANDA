@@ -7,7 +7,8 @@ Partial Class Inicio
         Response.Redirect("HeroisDosLixos.aspx")
     End Sub
 
-    Protected Sub btnFaleConosco_Click(sender As Object, e As EventArgs) Handles btnFaleConosco.Click
+     Protected Sub btnFaleConosco_Click(sender As Object, e As EventArgs) Handles btnFaleConosco.Click
+     SqlDataSource1.Insert()
         ' Verifica se o usuário escreveu alguma coisa
         If Not String.IsNullOrWhiteSpace(TextBox2.Text) Then
             ' Mensagem de sucesso (você pode redirecionar ou salvar no banco aqui)
