@@ -52,8 +52,20 @@ relatar os problemas observados no seu bairro, após preencher tudo aperte em "e
 
 De uma forma geral o site roda, os botões de envio e para mudar de página funcionam, os espaços de cadastro ou de resposta também funcionam.
 
+
 ##**Autores e Colaboradores:**
 
 Eu (Amanda Souza) sou a autora deste site, João Pedro; Ana Clara; Raphael e Gabriel Santos foram meus colaboradores. Todos desempenharam seus papéis na construção desse 
 projeto. Apesar de mim ter ficado com a parte mais complexa e de ter feito tudo sozinha, a ajuda deles em outars áreas deste projeto foi crucial para que este trabalho
-fosse concluído da melhor maneira possível.#
+fosse concluído da melhor maneira possível.
+
+##**Logos do site**
+
+![Imagem do WhatsApp de 2025-07-01 à(s) 07 01 27_f98db62c](https://github.com/user-attachments/assets/8eb360e2-f832-4b7c-8045-12540dd4b8f3)
+
+![Imagem do WhatsApp de 2025-07-01 à(s) 07 01 27_b0f18f52](https://github.com/user-attachments/assets/de447744-5b9a-4a84-bd60-fcb898a168e6)
+
+
+##**Emojis**
+
+💻
