@@ -50,7 +50,7 @@ relatar os problemas observados no seu bairro, após preencher tudo aperte em "e
 
 ##**Funcionabilidades Principais:**
 
-De uma forma geral o site roda, os botões de envio e para mudar de página funcionam, os espaços de cadastro ou de resposta tamém funcionam.
+De uma forma geral o site roda, os botões de envio e para mudar de página funcionam, os espaços de cadastro ou de resposta também funcionam.
 
 ##**Autores e Colaboradores:**
 
