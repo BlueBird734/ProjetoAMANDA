@@ -91,10 +91,11 @@ Partial Class Votacao
             btnEnviar.Visible = VotacaoFeita ' Mostra se já houve voto
         End If
     End Sub
-
-    Protected Sub btnEnviar_Click(ByVal sender As Object, ByVal e As EventArgs)
-        lblMensagem.Text = "Mensagem enviada com sucesso! Obrigado pelo contato."
-    End Sub
+    
+     Protected Sub btnEnviar_Click(ByVal sender As Object, ByVal e As EventArgs)
+     SqlDataSource2.Insert()
+     lblMensagem.Text = "Mensagem enviada com sucesso! Obrigado pelo contato."
+ End Sub
 
     Protected Sub btnResultado_Click(ByVal sender As Object, ByVal e As EventArgs)
         ' Redireciona para a página do módulo de inscrição (sem acentos no nome do arquivo)
