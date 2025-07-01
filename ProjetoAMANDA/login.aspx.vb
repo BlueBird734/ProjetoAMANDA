@@ -3,7 +3,9 @@ Partial Class login
     Inherits System.Web.UI.Page
 
 
-    Protected Sub btnEnviar_Click(sender As Object, e As EventArgs) Handles btnEnviar.Click
+    Protected Sub btnEnviar_Click(sender As Object, e As EventArgs)
+     ' Utilize SqlDataSource1 diretamente, se necessário
+     SqlDataSource1.Insert()
         Dim nome As String = txtNome.Text.Trim()
         Dim email As String = txtEmail.Text.Trim()
         Dim senha As String = txtSenha.Text
